@@ -1,1 +1,2 @@
-print(result)
+import database
+object = database.DB()
