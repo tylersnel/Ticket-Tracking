@@ -14,4 +14,4 @@ def create_user():
     if object.db_insert_new_user(query, user_name, password):
         print("User Succesfully Added")
 
-create_user()
+
