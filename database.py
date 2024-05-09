@@ -19,12 +19,18 @@ class DB:
         cursor.close()
         return result
         
-
     def db_insert_new_user(self, query1, query2, query3):
         self.mydb.autocommit =  True
         cursor = self.mydb.cursor()
         cursor.execute(query1, (query2, query3))
         return True
+
+    def db_signin(self, query1, query2):
+        cursor=self.mydb.cursor()
+        cursor.execute(query1, (query2,))
+        result = cursor.fetchall()
+        cursor.close()
+        return result
 
         
 
