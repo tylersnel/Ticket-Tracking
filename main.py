@@ -1,4 +1,5 @@
 import create_user
+import user_signin
 
 
 user_choice=input("Press N for new user or S to sign in ")
@@ -11,5 +12,4 @@ if user_choice=='n':
     create_user.create_user()
 
 if user_choice=='s':
-    with open("Ticket-Tracking\\user_checker.py") as file:
-        exec(file.read())
+    user_signin.signin()

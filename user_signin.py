@@ -1,4 +1,4 @@
-#This seems to work
+# working on sql table actions
 import database
 
 object = database.DB()
@@ -7,12 +7,10 @@ def signin():
     user_name=input("username: ")
     password=input("password: ")
     
-    query= "SELECT * from Employees WHERE username = %s"
+    query= "SELECT * from Employees WHERE username = %s AND password = %s"
 
-    result = object.db_signin(query, user_name)
+    result = object.db_signin(query, user_name, password)
     
     if result:
         for i in result:
             print(i)
-
-signin()

@@ -1,2 +1,2 @@
-object = database.DB()
-object.autocommit = True
+for i in result:
+    print(i)
