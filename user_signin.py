@@ -13,7 +13,7 @@ def signin():
     
     if result:
         for i in result:
-            print(i)
+            print("Welcome " + i[1])
     else:
         print("Incorrect username or password. Try again")
 
