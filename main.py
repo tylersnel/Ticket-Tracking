@@ -1,6 +1,7 @@
 import create_user
 import user_signin
 import available_actions
+import assign_ticket
 
 
 user_choice=input("Press N for new user or S to sign in ")
@@ -13,7 +14,9 @@ if user_choice=='n':
     create_user.create_user()
 
 if user_choice=='s':
-    user_signin.signin()
+    #user_id so it can be used in other functions without have to query the db again for id
+    user_id=user_signin.signin()
+    
 
 print("What would you like to do?")
 user_action=input("Press A for available actions or Q to see your action queue ")
@@ -24,8 +27,9 @@ while user_action!='a' and user_action!='q':
 
 if user_action=='a':
     available_actions.print_available_actions()
-    #### add section here for option to assign ticket or exit back#####
-    #### maybe get user id and put it in a variable here to be used#####
+    action_choice=input("Enter number of action you would like to assign to yourself or press B to go back ")
+    if action_choice.lower()!="b":
+        assign_ticket.assign_ticket(user_id, action_choice)
 
 if user_action=='q':
     pass

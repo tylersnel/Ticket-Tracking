@@ -40,7 +40,16 @@ class DB:
         cursor.execute(query1, (query2, query3, query4))
         cursor.close()
         return True
+    def db_assign_ticket(self, query1, query2, query3):
+        self.mydb.autocommit = True
+        cursor = self.mydb.cursor()
+        cursor.execute(query1, (query2, query3))
+        #To check if DB was updated
+        result = cursor.rowcount
+        cursor.close()
+        return result
         
+
 
 
         
