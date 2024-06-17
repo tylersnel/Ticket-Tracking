@@ -14,6 +14,7 @@ def signin():
     if result:
         for i in result:
             print("Welcome " + i[1])
+            return i[0]
     else:
         print("Incorrect username or password. Try again")
 
