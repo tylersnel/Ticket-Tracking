@@ -9,10 +9,17 @@ object.autocommit = True
 def create_user():
     user_name=input("Please enter username: ")
     password=input("Please enter password: ")
-    query= "INSERT INTO Employees (username, password) VALUES (%s, %s)"
+    user_type=input("Are you an employee for the RPAC? Y or N ")
+    user_type=user_type.lower()
+    while user_type!= "y" and user_type!="n":
+        user_type=input("Invalid input. Are you an employee for the RPAC? Y or N ")
+        user_type=user_type.lower()
+    
+    permissions = 1 if user_type=='n' else 2
 
-    if object.db_insert_new_user(query, user_name, password):
+    query= "INSERT INTO Employees (username, password, permissions) VALUES (%s, %s, %s)"
+
+    if object.db_insert_new_user(query, user_name, password, permissions):
         print("User Succesfully Added")
         return user_name
-
 
