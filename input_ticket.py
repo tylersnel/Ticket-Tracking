@@ -1,10 +1,12 @@
+
+import database
+
+object = database.DB()
+
 """
 Used by customers so that they can input work tickets. Customer must input unit name, action type and 
 last name of the service member that the ticket is for.
 """
-import database
-
-object = database.DB()
 
 def create_ticket():
     unit_name=input("Please enter unit name: ")

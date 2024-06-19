@@ -20,11 +20,12 @@ class DB:
         result = cursor.fetchall()
         cursor.close()
         return result
-    #Function for created new user    
-    def db_insert_new_user(self, query1, query2, query3):
+    #Function for created new user
+    #Queries are the query, username, password, permissions    
+    def db_insert_new_user(self, query1, query2, query3, query4):
         self.mydb.autocommit =  True
         cursor = self.mydb.cursor()
-        cursor.execute(query1, (query2, query3))
+        cursor.execute(query1, (query2, query3, query4))
         return True
     #Function used for signing in a user
     def db_signin(self, query1, query2, query3):
@@ -48,7 +49,14 @@ class DB:
         result = cursor.rowcount
         cursor.close()
         return result
-        
+    #Fucntion for fetching actions assigned to an employee
+    #Queries are the actual query, user ID
+    def db_assigned_actions_query(self, query1, query2):
+        cursor=self.mydb.cursor()
+        cursor.execute(query1, (query2,))
+        result = cursor.fetchall()
+        cursor.close()
+        return result
 
 
 

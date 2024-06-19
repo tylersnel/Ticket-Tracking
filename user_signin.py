@@ -3,6 +3,11 @@ import database
 
 object = database.DB()
 
+'''
+Function that process user login
+Makes call to database.py to see if username and password are correct
+Returns: Array with user id and user permissions
+'''
 def signin():
     user_name=input("username: ")
     password=input("password: ")
@@ -14,7 +19,7 @@ def signin():
     if result:
         for i in result:
             print("Welcome " + i[1])
-            return i[0]
+            return [i[0], i[3]]
     else:
         print("Incorrect username or password. Try again")
 
