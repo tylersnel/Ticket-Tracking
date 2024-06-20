@@ -35,16 +35,16 @@ class DB:
         cursor.close()
         return result
     #Function for creating a new work ticket
-    def db_create_ticket(self, query1, query2, query3, query4):
+    def db_create_ticket(self, query1, unit_name, action_type, sm_last_name, action_status):
         self.mydb.autocommit = True
         cursor = self.mydb.cursor()
-        cursor.execute(query1, (query2, query3, query4))
+        cursor.execute(query1, (unit_name, action_type, sm_last_name, action_status))
         cursor.close()
         return True
-    def db_assign_ticket(self, query1, query2, query3):
+    def db_assign_ticket(self, query1, action_id, assigned_tech_id, action_status):
         self.mydb.autocommit = True
         cursor = self.mydb.cursor()
-        cursor.execute(query1, (query2, query3))
+        cursor.execute(query1, (action_id, assigned_tech_id, action_status))
         #To check if DB was updated
         result = cursor.rowcount
         cursor.close()
@@ -57,7 +57,15 @@ class DB:
         result = cursor.fetchall()
         cursor.close()
         return result
-
+     #Function used for ticket edits
+     #Returns row count
+    def db_ticket_edit(self, query1, query2, query3):
+        self.mydb.autocommit = True
+        cursor=self.mydb.cursor()
+        cursor.execute(query1, (query2, query3))
+        result = cursor.rowcount
+        cursor.close()
+        return result
 
 
         
