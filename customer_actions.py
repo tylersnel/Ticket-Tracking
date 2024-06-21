@@ -20,3 +20,13 @@ def customer_actions(customer_id):
 
     if user_action == 'i':
         input_ticket.create_ticket(customer_id)
+
+    if user_action == 's':
+        #using the db_signin in fuction so not to have duplicate queries
+        action_status='complete'
+        query = "SELECT * FROM actions WHERE action_creator = %s AND action_status != %s" 
+        result = object.db_signin(query, customer_id, action_status)
+
+        for i in result:
+            print(i)
+customer_actions(14)
