@@ -31,4 +31,3 @@ def actions(user_id):
         action_status=input("Enter action status ")
         ticket_manager.change_status(action_id, action_status)
 
-actions(13)

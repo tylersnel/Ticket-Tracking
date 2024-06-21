@@ -1,6 +1,7 @@
 import create_user
 import user_signin
 import employee_actions
+import customer_actions
 
 
 user_choice=input("Press N for new user or S to sign in ")
@@ -10,7 +11,9 @@ while user_choice!='n' and user_choice!='s':
     user_choice=user_choice.lower()
 
 if user_choice=='n':
-    create_user.create_user()
+    array=create_user.create_user()
+    user_id=array[0]
+    user_permissions=array[1]
 
 if user_choice=='s':
     array=user_signin.signin()
@@ -19,3 +22,6 @@ if user_choice=='s':
 
 if user_permissions==2:
    employee_actions.actions(user_id)
+
+if user_permissions==1:
+    customer_actions.customer_actions(user_id)
