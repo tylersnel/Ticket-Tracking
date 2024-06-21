@@ -35,10 +35,10 @@ class DB:
         cursor.close()
         return result
     #Function for creating a new work ticket
-    def db_create_ticket(self, query1, unit_name, action_type, sm_last_name, action_status):
+    def db_create_ticket(self, query1, unit_name, action_type, sm_last_name, action_status, action_creator):
         self.mydb.autocommit = True
         cursor = self.mydb.cursor()
-        cursor.execute(query1, (unit_name, action_type, sm_last_name, action_status))
+        cursor.execute(query1, (unit_name, action_type, sm_last_name, action_status, action_creator))
         cursor.close()
         return True
     def db_assign_ticket(self, query1, action_id, assigned_tech_id, action_status):

@@ -19,4 +19,4 @@ def customer_actions(customer_id):
         user_action=user_action.lower()
 
     if user_action == 'i':
-        pass
+        input_ticket.create_ticket(customer_id)
