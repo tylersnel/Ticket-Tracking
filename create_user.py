@@ -21,5 +21,9 @@ def create_user():
 
     if object.db_insert_new_user(query, user_name, password, permissions):
         print("User Succesfully Added")
-        return user_name
-
+        # another query to return id of new user from DB
+        
+        query2 = "SELECT id FROM Employees WHERE username = %s AND password = %s "    
+        user_id = object.db_signin(query2, user_name, password)
+        for i in user_id:
+            return [i[0], permissions]
