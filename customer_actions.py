@@ -16,7 +16,7 @@ def customer_actions(customer_id):
         print("What would you like to do?")
         user_action=input("Press I to input a new ticket, S to check status of your open actions, E to edit ticket, L to logout ")
         user_action=user_action.lower()
-        while user_action!='i' and user_action!='s' and user_action!='e':
+        while user_action!='i' and user_action!='s' and user_action!='l':
             user_action=input("Incorrect input. Press I to input a new ticket, S to check status of your open actions, E to edit ticket ") 
             user_action=user_action.lower()
 
