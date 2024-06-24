@@ -12,7 +12,13 @@ class DB:
             passwd="",
             database="users"
         )
+        self.set_isolation_level()
         print("Started DB connection")
+    #Sets isolation level to see changes committed by other transactions
+    def set_isolation_level(self):
+        cursor = self.mydb.cursor()
+        cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
+        cursor.close()
     #Function to run basic queries that don't have user input
     def db_query(self, query):
         cursor=self.mydb.cursor()
