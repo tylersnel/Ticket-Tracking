@@ -72,6 +72,14 @@ class DB:
         result = cursor.rowcount
         cursor.close()
         return result
+    #Fuction for search 
+    #Returns search result
+    def db_search(self, query, unit_name, action_type, sm_last_name, assigned_tech_id, action_status, action_creator):
+        cursor=self.mydb.cursor()
+        cursor.execute(query, (unit_name, action_type, sm_last_name, assigned_tech_id, action_status, action_creator))
+        result= cursor.fetchall()
+        cursor.close
+        return result
 
 
         
