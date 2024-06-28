@@ -23,12 +23,14 @@ class Ui_MainWindow(object):
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(390, 290, 75, 23))
         self.pushButton_2.setObjectName("pushButton_2")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.plainTextEdit.setGeometry(QtCore.QRect(190, 170, 341, 41))
-        self.plainTextEdit.setObjectName("plainTextEdit")
-        self.plainTextEdit_2 = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.plainTextEdit_2.setGeometry(QtCore.QRect(190, 230, 341, 41))
-        self.plainTextEdit_2.setObjectName("plainTextEdit_2")
+        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit.setGeometry(QtCore.QRect(190, 170, 341, 41))
+        self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit.setPlaceholderText("Enter username")
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_2.setGeometry(QtCore.QRect(190, 230, 341, 41))
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.lineEdit_2.setPlaceholderText("Enter password")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(230, 70, 261, 61))
         font = QtGui.QFont()
@@ -44,8 +46,25 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def login(self):
+        user_name = self.lineEdit.text()
+        password = self.lineEdit_2.text()
+        print(user_name)
+        print(password)
+        
+
+    def clearText(self):
+        #clears text that is in username and password
+        self.lineEdit.clear()
+        self.lineEdit_2.clear()
+
+    def keyPressEvent(self, e):
+        if e.key() == 16777220:
+            self.login()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -53,6 +72,8 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Login"))
         self.pushButton_2.setText(_translate("MainWindow", "Cancel"))
         self.label.setText(_translate("MainWindow", "Ticket Tracker"))
+        self.pushButton.clicked.connect(self.login)
+        self.pushButton_2.clicked.connect(self.clearText)
 
 
 if __name__ == "__main__":
