@@ -10,8 +10,8 @@ They can assign tickets, create tickets, see what tickets they have, mark ticket
 Returns: None
 '''
 def actions(user_id):
-    exit=False
-    while not exit:
+    logout=False
+    while not logout:
         print("What would you like to do?")
         user_action=input("Press A for available actions, Q to see your action queue, C to change action status, S to search, L to logout ")
         user_action=user_action.lower()
@@ -38,6 +38,6 @@ def actions(user_id):
             search.search()
                   
         if user_action=='l':
-            exit=True
+            logout=True
             print("You are now logged out.")
 

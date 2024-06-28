@@ -11,8 +11,8 @@ They will be able to do some of what employees can do but not all. Available act
 tickets, check status of their tickets, and edit their tickets, check past tickets. Maybe get email when action is complete??
 '''
 def customer_actions(customer_id):
-    exit=False
-    while not exit:
+    logout=False
+    while not logout:
         print("What would you like to do?")
         user_action=input("Press I to input a new ticket, S to check status of your open actions, E to edit ticket, L to logout ")
         user_action=user_action.lower()
@@ -33,5 +33,5 @@ def customer_actions(customer_id):
                 print(i)
 
         if user_action == 'l':
-            exit=True
+            logout=True
             print("You are logged out.")
