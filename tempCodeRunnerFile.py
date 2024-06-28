@@ -1,2 +1,2 @@
-for i in result:
-    print(i)
+
+        MainWindow.setCentralWidget(self.centralwidget)
