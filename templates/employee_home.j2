@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/employee_home.css') }}">
+</head>
+<body>
+    <h1>Home</h1>
+        <ul>
+            {% for item in user %}
+                <h2>WELCOME {{ item[1] }}</h2>
+            {% endfor %}
+        </ul>
+
+            
+            <table class="avail_actions_table" id="avail_actions_table" cellspacing="1" border="1">
+                <thread>
+                <tr>
+                    <th>Unit</th>
+                    <th>Action Type</th>
+                    <th>SM's Last Name</th>
+                    <th>Assinged Tech</th>
+                    <th>Status</th>
+                    <th>Created By</th>
+                    <th>Assign To Yourself</th>
+                </tr>
+                <tbody>
+                {% for action in unassigned_actions %}
+                <tr>
+                    <td>{{ action[1] }} </td>
+                    <td>{{ action[2] }} </td>
+                    <td>{{ action[3] }} </td>
+                    <td>{{ action[4] }} </td>
+                    <td>{{ action[5] }} </td>
+                    <td>{{ action[6] }} </td>
+                    <td> Assign </td>
+                </tr>
+                {% endfor %}
+            </table>
+            
+
+</body>
+</html>
