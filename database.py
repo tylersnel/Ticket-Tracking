@@ -65,10 +65,10 @@ class DB:
         return result
      #Function used for ticket edits
      #Returns row count
-    def db_ticket_edit(self, query1, query2, query3):
+    def db_action_edit(self, query, unit_name, action_type, sm_last_name, assigned_tech_id, action_status, action_id):
         self.mydb.autocommit = True
         cursor=self.mydb.cursor()
-        cursor.execute(query1, (query2, query3))
+        cursor.execute(query, (unit_name, action_type, sm_last_name, assigned_tech_id, action_status, action_id))
         result = cursor.rowcount
         cursor.close()
         return result
@@ -78,6 +78,14 @@ class DB:
         cursor=self.mydb.cursor()
         cursor.execute(query, (unit_name, action_type, sm_last_name, assigned_tech_id, action_status, action_creator))
         result= cursor.fetchall()
+        cursor.close
+        return result
+    #Function used to search for actions by id
+    #Used in the edit_action template
+    def db_action_search(self, query, action_id):
+        cursor=self.mydb.cursor()
+        cursor.execute(query, (action_id,))
+        result=cursor.fetchall()
         cursor.close
         return result
 

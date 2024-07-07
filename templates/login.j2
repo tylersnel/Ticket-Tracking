@@ -12,6 +12,9 @@
     <input type="text" id="password" name="password"><br><br>
     <input type="submit" value="Submit">
     </form>
+    {% if login_error == true %}
+        <p>Incorrect username or password. Please try again<P>
+    {% endif %}
 
 </body>
 </html>
