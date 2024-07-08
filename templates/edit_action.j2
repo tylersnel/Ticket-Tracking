@@ -44,7 +44,7 @@
        <input type="hidden" id="action_id" name="action_id" value={{ action[0][0] }} 
         <label for="unit">Unit:</label>
         <select name="unit" id="unit">
-            <option value="{{ action[0][1] }}">-Choose a unit-<option>
+            <option value="{{ action[0][1] }}">-Choose a unit-<option> <!-- if they don't make any changes, value stays the same -->
             <option value="395">395</option>
             <option value="420">420</option>
             <option value="889">889</option>
@@ -52,22 +52,22 @@
         </select>
         <label for="action_type">Action Type:</label>
         <select name="action_type" id="action_type">
-            <option value="{{ action[0][2] }}">-Choose an action type-<option>
+            <option value="{{ action[0][2] }}">-Choose an action type-<option> <!-- if they don't make any changes, value stays the same -->
             <option value="admin">Admin</option>
             <option value="finance">Finance</option>
-            <option value="Commanders">Commanders/option>
-            <option value="other">Other</option>
+            <option value="iPERMS">iPERMS</option>
+            <option value="UNSAT">UNSAT</option>
         </select>
         <label for="sm_last_name">SM Last Name:</label>
-        <input type="text" id="sm_last_name" name="sm_last_name" value="{{ action[0][3] }}">
+        <input type="text" id="sm_last_name" name="sm_last_name" value="{{ action[0][3] }}"> <!-- if they don't make any changes, value stays the same -->
         <label for="assigned_tech_id">Tech ID:</label>
-        <input type="number" id="assigned_tech_id" name="assigned_tech_id" value="{{ action[0][4] }}">
-        <label for="action_type">Action Type:</label>
+        <input type="number" id="assigned_tech_id" name="assigned_tech_id" value="{{ action[0][4] }}"> <!-- if they don't make any changes, value stays the same -->
+        <label for="action_type">Action Status:</label>
         <select name="action_status" id="action_status">
-            <option value="{{ action[0][5] }}">-Choose an action status-<option>
+            <option value="{{ action[0][5] }}">-Choose an action status-<option> <!-- if they don't make any changes, value stays the same -->
             <option value="complete">Complete</option>
             <option value="RWO">Return without action</option>
-            <option value="Unassigned">Unassigned/option>
+            <option value="Unassigned">Unassign</option>
         </select><br><br>
         <input type="submit" value="Edit" name="Edit_Action">
         <button type="button" onclick="clearForm()">Cancel</button>

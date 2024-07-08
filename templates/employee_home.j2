@@ -7,11 +7,11 @@
 </head>
 <body>
     <h1>Home</h1>
-        <ul>
-            {% for item in user %}
-                <h2>WELCOME {{ item[1] }}</h2>
-            {% endfor %}
-        </ul>
+        
+            
+                <h2>WELCOME {{ user }}</h2>
+            
+    
             <table class="assigned_actions_table" id="assigned_actions_table" cellspacing="1" border="1">
                 <caption>Your Assigned Actions</caption>
                 <thread>
@@ -61,7 +61,11 @@
                     <td>{{ action[4] }} </td>
                     <td>{{ action[5] }} </td>
                     <td>{{ action[6] }} </td>
-                    <td> Assign </td>
+                    <td>
+                        <form action="/assign_action/{{ tech_id  }}/{{ action[0] }}" method="post">
+                        <button name="assign" value="assign">Assign</button>
+                        </form> 
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
