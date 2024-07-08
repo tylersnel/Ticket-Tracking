@@ -47,7 +47,7 @@ class DB:
         cursor.execute(query1, (unit_name, action_type, sm_last_name, action_status, action_creator))
         cursor.close()
         return True
-    def db_assign_ticket(self, query1, action_id, assigned_tech_id, action_status):
+    def db_assign_ticket(self, query1, action_id, assigned_tech_id, action_status): ## probaby can get rid of this
         self.mydb.autocommit = True
         cursor = self.mydb.cursor()
         cursor.execute(query1, (action_id, assigned_tech_id, action_status))
@@ -88,6 +88,12 @@ class DB:
         result=cursor.fetchall()
         cursor.close
         return result
-
+    #Function used for assigning an action
+    def db_assign_action(self, query1, query2, query3, query4):
+        cursor=self.mydb.cursor()
+        cursor.execute(query1, (query2, query3, query4))
+        result = cursor.rowcount
+        cursor.close()
+        return result
 
         
