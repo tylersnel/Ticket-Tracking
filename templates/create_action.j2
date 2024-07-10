@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Action</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/employee_home.css') }}">
+</head>
+    <script>
+        function clearForm() {
+            document.getElementById('unit').selectedIndex = 0;
+            document.getElementById('action_type').selectedIndex = 0;
+            document.getElementById('sm_last_name').value = '';
+            document.getElementById('assigned_tech_id').value = '';
+            document.getElementById('action_status').selectedIndex = 0;
+        }
+    </script>
+<body>
+    <h1>Create</h1>
+     <form action="/create_action" method="post" name="Create_Action" id="Create_Action">
+        <label for="unit">Unit:</label>
+        <select name="unit" id="unit" required>
+            <option value="">-Choose a unit-<option>
+            <option value="395">395</option>
+            <option value="420">420</option>
+            <option value="889">889</option>
+            <option value="378">378</option>
+        </select>
+        <label for="action_type">Action Type:</label>
+        <select name="action_type" id="action_type" required>
+            <option value="">-Choose a action type-<option>
+            <option value="admin">Admin</option>
+            <option value="finance">Finance</option>
+            <option value="iPERMS">iPERMS</option>
+            <option value="UNSAT">UNSAT</option>
+        </select>
+        <label for="sm_last_name">SM Last Name:</label>
+        <input type="text" id="sm_last_name" name="sm_last_name" required>
+        <input type="submit" value="Create" name="Create_Action">
+        <button type="button" onclick="clearForm()">Cancel</button>
+    </form>
+        <button onclick="goBack()">Go Back</button>
+        <script>
+        function goBack() {
+            window.history.back();
+        }
+        </script>
+
+</body>
+</html>
