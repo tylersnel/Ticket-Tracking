@@ -42,16 +42,6 @@ def login():
             session['username']=user_name
             session['tech_id']=user[0][0]
             return redirect (url_for('main'))
-            ##### Maybe make this into one function? #####
-            # query2 = "SELECT * from Actions WHERE assigned_tech_id is NULL"
-            # unassigned_actions = object.db_query(query2)
-            # action_status='complete'
-            # query3 = "SELECT * from actions WHERE assigned_tech_id = %s AND action_status !=%s"
-            # #using the db_signin in fuction so not to have duplicate queries
-            # assigned_actions =  object.db_signin(query3, user[0][0], action_status)
-            # session['username']=user_name
-            # session['tech_id']=user[0][0]
-            # return render_template("employee_home.j2", user=user_name, tech_id=user[0][0], unassigned_actions=unassigned_actions, assigned_actions=assigned_actions)
 
 @app.route('/edit_action/<int:action_id>', methods=["POST", "GET"])
 def edit_action(action_id):
@@ -75,15 +65,6 @@ def edit_action(action_id):
             
             if result:
                 return redirect (url_for('main'))
-                # query2 = "SELECT * from Actions WHERE assigned_tech_id is NULL"
-                # unassigned_actions = object.db_query(query2)
-                # action_status='complete'
-                # query3 = "SELECT * from actions WHERE assigned_tech_id = %s AND action_status !=%s"
-                # #using the db_signin in fuction so not to have duplicate queries
-                # assigned_actions =  object.db_signin(query3, session['tech_id'], action_status)
-                # user=session['username']
-                # tech_id=session['tech_id']
-                # return render_template("employee_home.j2", user=user, tech_id=tech_id, unassigned_actions=unassigned_actions, assigned_actions=assigned_actions)
         
 @app.route('/assign_action/<int:tech_id>/<int:action_id>', methods=["POST", "GET"])
 def assign_action(tech_id, action_id):
@@ -95,14 +76,6 @@ def assign_action(tech_id, action_id):
         
             if result:
                     return redirect (url_for('main'))
-                    # query2 = "SELECT * from Actions WHERE assigned_tech_id is NULL"
-                    # unassigned_actions = object.db_query(query2)
-                    # action_status='complete'
-                    # query3 = "SELECT * from actions WHERE assigned_tech_id = %s AND action_status !=%s"
-                    # #using the db_signin in fuction so not to have duplicate queries
-                    # assigned_actions =  object.db_signin(query3, tech_id, action_status)
-                    # user=session['username']
-                    # return render_template("employee_home.j2", user=user, tech_id=tech_id, unassigned_actions=unassigned_actions, assigned_actions=assigned_actions)
             else:
                 print("Failed")
                 return render_template("login.j2")
@@ -121,6 +94,15 @@ def create_action():
             if object.db_create_ticket(query, unit, action_type, sm_last_name, action_status, action_creator):
                 return redirect (url_for('main'))
     return render_template("create_action.j2")
+
+@app.route('/view_action/<int:action_id>', methods=["POST", "GET"])
+def view_action(action_id):
+    if request.method == "GET":
+        query = "SELECT * from Actions WHERE action_id = %s"
+        action = object.db_action_search(query, action_id)
+        query2 = "SELECT * from Comments WHERE action_id = %s"
+        comments = object.db_action_search(query2, action_id)
+        return render_template("view_action.j2", action=action, comments=comments)
 
 @app.route('/employees', methods=["POST", "GET"])
 def employees():

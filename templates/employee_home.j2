@@ -13,6 +13,7 @@
                 <caption>Your Assigned Actions</caption>
                 <thread>
                 <tr>
+                    <th>View</th>
                     <th>Unit</th>
                     <th>Action Type</th>
                     <th>SM's Last Name</th>
@@ -24,6 +25,7 @@
                 <tbody>
                 {% for action in assigned_actions %}
                 <tr>
+                    <td><a href=/view_action/{{action[0]}}>View</a></td>
                     <td>{{ action[1] }} </td>
                     <td>{{ action[2] }} </td>
                     <td>{{ action[3] }} </td>
