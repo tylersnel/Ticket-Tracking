@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Action</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/employee_home.css') }}">
+</head>
+<body>
+    <h1>View</h1>
+        <table class="action" id="action" cellspacing="1" border="1">
+            <caption>Action</caption>
+            <thread>
+            <tr>
+                <th>Unit</th>
+                <th>Action Type</th>
+                <th>SM's Last Name</th>
+                <th>Assinged Tech</th>
+                <th>Status</th>
+                <th>Created By</th>
+                <th>Edit</th>
+            </tr>
+            <tbody>
+            {% for action in action %}
+            <tr>
+                <td>{{ action[1] }} </td>
+                <td>{{ action[2] }} </td>
+                <td>{{ action[3] }} </td>
+                <td>{{ action[4] }} </td>
+                <td>{{ action[5] }} </td>
+                <td>{{ action[6] }} </td>
+                <td><a href=/edit_action/{{action[0]}}>Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br></br>
+        <table class="comments" id="comments" cellspacing="1" border="1">
+            <caption>Action Comments</caption>
+            <thread>
+            <tr>
+                <th>Comment</th>
+                <th>Time</th>
+                <th>Action ID</th>
+                <th>User ID</th>
+            </tr>
+            <tbody>
+            {% for comments in comments %}
+            <tr>
+                <td>{{ comments[1] }} </td>
+                <td>{{ comments[2] }} </td>
+                <td>{{ comments[3] }} </td>
+                <td>{{ comments[4] }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    <button onclick="goBack()">Go Back</button>
+    <br></br>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+</html>
