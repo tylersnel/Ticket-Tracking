@@ -11,8 +11,8 @@ app.secret_key = key
 def render_home(user_name, tech_id):
     query2 = "SELECT * from Actions WHERE assigned_tech_id is NULL"
     unassigned_actions = object.db_query(query2)
-    action_status='complete'
-    query3 = "SELECT * from actions WHERE assigned_tech_id = %s AND action_status !=%s"
+    action_status='Assigned'
+    query3 = "SELECT * from actions WHERE assigned_tech_id = %s AND action_status =%s"
     #using the db_signin in fuction so not to have duplicate queries
     assigned_actions =  object.db_signin(query3, tech_id, action_status)
     return render_template("employee_home.j2", user_name=user_name, tech_id=tech_id, unassigned_actions=unassigned_actions, assigned_actions=assigned_actions)   
@@ -48,7 +48,9 @@ def edit_action(action_id):
     if request.method == "GET":
         query = "SELECT * from Actions WHERE action_id = %s"
         action = object.db_action_search(query, action_id)
-        return render_template("edit_action.j2", action=action, )
+        query2 = "SELECT * from Comments WHERE action_id = %s"
+        comments = object.db_action_search(query2, action_id) # Using db_action_search to not duplicate queries
+        return render_template("edit_action.j2", action=action, comments=comments)
     elif request.method == "POST":
         #if the edit button is clicked
         if request.form.get("Edit_Action"):
@@ -58,13 +60,16 @@ def edit_action(action_id):
             last_name = request.form["sm_last_name"]
             tech_id = request.form["assigned_tech_id"]
             status = request.form["action_status"]
+            new_comment = request.form["comment"]
             if status == "Unassigned":
                 tech_id = None #also unassigning tech_id
             query2 = "UPDATE actions SET unit_name = %s, action_type = %s, sm_last_name = %s, assigned_tech_id = %s, action_status = %s WHERE action_id = %s"
-            result = object.db_action_edit(query2, unit, a_type, last_name, tech_id, status, a_id)
-            
-            if result:
-                return redirect (url_for('main'))
+            object.db_action_edit(query2, unit, a_type, last_name, tech_id, status, a_id)
+            if new_comment !='':
+                query3 = "INSERT INTO comments (comment, action_id, user_id) VALUES (%s, %s, %s)"
+                object.db_assign_action(query3, new_comment,a_id,tech_id)
+             
+            return redirect (url_for('main'))
         
 @app.route('/assign_action/<int:tech_id>/<int:action_id>', methods=["POST", "GET"])
 def assign_action(tech_id, action_id):
@@ -89,10 +94,13 @@ def create_action():
             sm_last_name = request.form["sm_last_name"]
             action_status = "unassigned"
             action_creator = session['tech_id']
-
-            query= "INSERT INTO actions (unit_name, action_type, sm_last_name, action_status, action_creator) VALUES (%s, %s, %s, %s, %s)"
-            if object.db_create_ticket(query, unit, action_type, sm_last_name, action_status, action_creator):
+            comment= request.form["comments"]
+            query = "INSERT INTO actions (unit_name, action_type, sm_last_name, action_status, action_creator) VALUES (%s, %s, %s, %s, %s)"
+            query2 = "INSERT INTO comments(comment, action_id, user_id) VALUES (%s, %s, %s)"
+            if object.db_create_ticket(query, query2, unit, action_type, sm_last_name, action_status, action_creator, comment):
                 return redirect (url_for('main'))
+            else:
+                return render_template("login.j2")
     return render_template("create_action.j2")
 
 @app.route('/view_action/<int:action_id>', methods=["POST", "GET"])

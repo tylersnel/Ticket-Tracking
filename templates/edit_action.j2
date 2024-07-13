@@ -68,7 +68,29 @@
             <option value="complete">Complete</option>
             <option value="RWO">Return without action</option>
             <option value="Unassigned">Unassign</option>
+            <option value="Cancelled">Cancel Action</option>
         </select><br><br>
+        <table class="comments" id="comments" cellspacing="1" border="1">
+            <caption>Action Comments</caption>
+            <thread>
+            <tr>
+                <th>Comment</th>
+                <th>Time</th>
+                <th>Action ID</th>
+                <th>User ID</th>
+            </tr>
+            <tbody>
+            {% for comments in comments %}
+            <tr>
+                <td>{{ comments[1] }} </td>
+                <td>{{ comments[2] }} </td>
+                <td>{{ comments[3] }} </td>
+                <td>{{ comments[4] }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Enter New Comment..."></textarea>
+        <br></br>
         <input type="submit" value="Edit" name="Edit_Action">
         <button type="button" onclick="clearForm()">Cancel</button>
     </form>
