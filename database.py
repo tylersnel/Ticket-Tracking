@@ -48,7 +48,7 @@ class DB:
         action_id = cursor.lastrowid
         cursor.execute(query2,(comment, action_id, action_creator))#adding comment, new action_id  and action_creator to comments table
         cursor.close()
-        return True
+        return action_id
     def db_assign_ticket(self, query1, action_id, assigned_tech_id, action_status): ## probaby can get rid of this
         self.mydb.autocommit = True
         cursor = self.mydb.cursor()
@@ -97,5 +97,10 @@ class DB:
         result = cursor.rowcount
         cursor.close()
         return result
-
+    #Function used to upload files to DB
+    def db_upload_files(self, query, action_id, file_name, file_data, mime_type, user_id):
+        cursor=self.mydb.cursor()
+        cursor.execute(query, (action_id, file_name, file_data, mime_type, user_id))
+        cursor.close()
+        return True
         

@@ -1,8 +1,10 @@
 import flask
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash, send_file
 import os
 import database
 from key import key
+import io
+import mimetypes
 
 object = database.DB()
 app = flask.Flask(__name__)
@@ -97,10 +99,23 @@ def create_action():
             comment= request.form["comments"]
             query = "INSERT INTO actions (unit_name, action_type, sm_last_name, action_status, action_creator) VALUES (%s, %s, %s, %s, %s)"
             query2 = "INSERT INTO comments(comment, action_id, user_id) VALUES (%s, %s, %s)"
-            if object.db_create_ticket(query, query2, unit, action_type, sm_last_name, action_status, action_creator, comment):
-                return redirect (url_for('main'))
-            else:
-                return render_template("login.j2")
+            action_id = object.db_create_ticket(query, query2, unit, action_type, sm_last_name, action_status, action_creator, comment)
+            
+            if 'files' in request.files:
+                print("hi")
+                files = request.files.getlist('files')
+                for file in files:
+                    if file:
+                        file_data = file.read()
+                        file_name = file.filename
+                        mime_type = file.mimetype
+                        query3 = "INSERT INTO files (action_id, file_name, file_data, mime_type, user_id) VALUES (%s, %s, %s, %s, %s)"
+                        if object.db_upload_files(query3, action_id, file_name, file_data, mime_type, action_creator):
+                            return redirect (url_for('main'))
+                        else:
+                            return render_template("login.j2")
+            return redirect (url_for('main'))
+
     return render_template("create_action.j2")
 
 @app.route('/view_action/<int:action_id>', methods=["POST", "GET"])
