@@ -18,7 +18,7 @@
     </script>
 <body>
     <h1>Create</h1>
-     <form action="/create_action" method="post" name="Create_Action" id="Create_Action">
+     <form action="/create_action" method="post" name="Create_Action" id="Create_Action" enctype="multipart/form-data">
         <label for="unit">Unit:</label>
         <select name="unit" id="unit" required>
             <option value="">-Choose a unit-</option>
@@ -37,6 +37,9 @@
         </select>
         <label for="sm_last_name">SM Last Name:</label>
         <input type="text" id="sm_last_name" name="sm_last_name" required>
+        <br></br>
+        <label for="files">Upload Files:</label>
+        <input type="file" id="files" name="files" multiple>
         <br></br>
         <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Enter Comments..." required></textarea>
         <br></br>
