@@ -103,4 +103,9 @@ class DB:
         cursor.execute(query, (action_id, file_name, file_data, mime_type, user_id))
         cursor.close()
         return True
-        
+    def db_download_file(self, query, id):
+        cursor=self.mydb.cursor()
+        cursor.execute(query, (id,))
+        result = cursor.fetchone()
+        cursor.close()
+        return result

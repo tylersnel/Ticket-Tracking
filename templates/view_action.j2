@@ -33,6 +33,26 @@
             {% endfor %}
         </table>
         <br></br>
+        <table class="files" id="files" cellspacing="1" border="1">
+            <caption>Action Files</caption>
+            <thread>
+            <tr>
+                <th>File</th>
+                <th>Action ID</th>
+                <th>User ID</th>
+                <th>Download File</th>                
+            </tr>
+            <tbody>
+            {% for files in files %}
+            <tr>
+                <td>{{ files[2] }} </td>
+                <td>{{ files[1]  }} </td>
+                <td>{{ files[5]  }} </td>
+                <td><a href=/download/{{files[0]}}/{{files[2]}}>Download</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br></br>
         <table class="comments" id="comments" cellspacing="1" border="1">
             <caption>Action Comments</caption>
             <thread>
