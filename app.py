@@ -110,10 +110,10 @@ def create_action():
                         file_name = file.filename
                         mime_type = file.mimetype
                         query3 = "INSERT INTO files (action_id, file_name, file_data, mime_type, user_id) VALUES (%s, %s, %s, %s, %s)"
-                        if object.db_upload_files(query3, action_id, file_name, file_data, mime_type, action_creator):
-                            return redirect (url_for('main'))
-                        else:
-                            return render_template("login.j2")
+                        object.db_upload_files(query3, action_id, file_name, file_data, mime_type, action_creator)
+                flash("Action Created")        
+                return redirect (url_for('main'))
+            flash("Action Created")    
             return redirect (url_for('main'))
 
     return render_template("create_action.j2")
@@ -125,7 +125,22 @@ def view_action(action_id):
         action = object.db_action_search(query, action_id)
         query2 = "SELECT * from Comments WHERE action_id = %s"
         comments = object.db_action_search(query2, action_id)
-        return render_template("view_action.j2", action=action, comments=comments)
+        query3 = "SELECT * from Files WHERE action_id = %s"
+        files = object.db_action_search(query3, action_id)
+        return render_template("view_action.j2", action=action, comments=comments, files=files)
+    
+@app.route('/download/<int:id>/<file_name>', methods=["POST", "GET"])
+def file_download(id, file_name):
+    if request.method == "GET":
+        query = "SELECT * from Files WHERE id = %s"
+        result = object.db_download_file(query, id)
+
+        if result:
+            file_data = result[3]
+            mimetype = result[4]
+            return send_file(io.BytesIO(file_data), download_name=file_name, mimetype=mimetype, as_attachment=True)
+        return "File not found", 404
+
 
 @app.route('/employees', methods=["POST", "GET"])
 def employees():
