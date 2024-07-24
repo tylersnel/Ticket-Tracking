@@ -141,7 +141,7 @@ def create_action():
             unit = request.form["unit"]
             action_type = request.form["action_type"]
             sm_last_name = request.form["sm_last_name"]
-            action_status = "unassigned"
+            action_status = "Unassigned"
             action_creator = session['id']
             comment= request.form["comments"]
             query = "INSERT INTO actions (unit_name, action_type, sm_last_name, action_status, action_creator) VALUES (%s, %s, %s, %s, %s)"
