@@ -40,7 +40,7 @@
             document.getElementById('action_status').selectedIndex = 0;
         }
     </script>
-    <form action="/edit_action/{{ action[0][0] }}" method="post" name="Edit_Action" id="Edit_Action">
+    <form action="/edit_action/{{ action[0][0] }}" method="post" name="Edit_Action" id="Edit_Action" enctype="multipart/form-data">
        <input type="hidden" id="action_id" name="action_id" value={{ action[0][0] }} 
         <label for="unit">Unit:</label>
         <select name="unit" id="unit">
@@ -70,6 +70,29 @@
             <option value="Unassigned">Unassign</option>
             <option value="Cancelled">Cancel Action</option>
         </select><br><br>
+         <br></br>
+        <table class="files" id="files" cellspacing="1" border="1">
+            <caption>Action Files</caption>
+            <thread>
+            <tr>
+                <th>File</th>
+                <th>Action ID</th>
+                <th>User ID</th>
+                <th>Download File</th>                
+            </tr>
+            <tbody>
+            {% for files in files %}
+            <tr>
+                <td>{{ files[2] }} </td>
+                <td>{{ files[1]  }} </td>
+                <td>{{ files[5]  }} </td>
+                <td><a href=/download/{{files[0]}}/{{files[2]}}>Download</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <label for="files">Upload Files:</label>
+        <input type="file" id="files" name="files" multiple>
+        <br></br>
         <table class="comments" id="comments" cellspacing="1" border="1">
             <caption>Action Comments</caption>
             <thread>
@@ -89,7 +112,7 @@
             </tr>
             {% endfor %}
         </table>
-        <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Enter New Comment..."></textarea>
+        <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Enter New Comment..." required></textarea>
         <br></br>
         <input type="submit" value="Edit" name="Edit_Action">
         <button type="button" onclick="clearForm()">Cancel</button>
