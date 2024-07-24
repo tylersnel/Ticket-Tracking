@@ -2,15 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
-     <link rel="stylesheet" href="{{ url_for('static', filename='styles/employee_home.css') }}">
+    <title>Print List in Jinja</title>
 </head>
 <body>
     <h1>Home</h1>
-        <h2>WELCOME {{ user_name }}</h2>
-        <a href="/create_action">Create Action</a> 
-            <table class="assigned_actions_table" id="assigned_actions_table" cellspacing="1" border="1">
+        <h2>WELCOME </h2>
+        <a href="/create_action">Create Action</a>
+        <table class="assigned_actions_table" id="assigned_actions_table" cellspacing="1" border="1">
                 <caption>Your Assigned Actions</caption>
+                <thread>
+                <tr>
+                    <th>View</th>
+                    <th>Unit</th>
+                    <th>Action Type</th>
+                    <th>SM's Last Name</th>
+                    <th>Assinged Tech</th>
+                    <th>Status</th>
+                    <th>Created By</th>
+                </tr>
+                <tbody>
+                {% for action in assigned_actions %}
+                <tr>
+                    <td><a href=/view_action/{{action[0]}}>View</a></td>
+                    <td>{{ action[1] }} </td>
+                    <td>{{ action[2] }} </td>
+                    <td>{{ action[3] }} </td>
+                    <td>{{ action[4] }} </td>
+                    <td>{{ action[5] }} </td>
+                    <td>{{ action[6] }} </td>
+                </tr>
+                {% endfor %}
+            </table>
+        <br></br>
+        <table class="RWO_actions_table" id="RWO_actions_table" cellspacing="1" border="1">
+                <caption>RWO Actions</caption>
                 <thread>
                 <tr>
                     <th>View</th>
@@ -23,7 +48,7 @@
                     <th>Edit</th>
                 </tr>
                 <tbody>
-                {% for action in assigned_actions %}
+                {% for action in RWO_actions %}
                 <tr>
                     <td><a href=/view_action/{{action[0]}}>View</a></td>
                     <td>{{ action[1] }} </td>
@@ -36,39 +61,35 @@
                 </tr>
                 {% endfor %}
             </table>
-               
-    <br></br>
-    <br></br>
-            <table class="avail_actions_table" id="avail_actions_table" cellspacing="1" border="1">
-                <caption>Unassigned Actions</caption>
+        <br></br>
+        <table class="unassigned_actions_table" id="unassigned_actions_table" cellspacing="1" border="1">
+                <caption>Your Unassigned Actions</caption>
                 <thread>
                 <tr>
+                    <th>View</th>
                     <th>Unit</th>
                     <th>Action Type</th>
                     <th>SM's Last Name</th>
                     <th>Assinged Tech</th>
                     <th>Status</th>
                     <th>Created By</th>
-                    <th>Assign To Yourself</th>
+                    <th>Edit</th>
                 </tr>
                 <tbody>
                 {% for action in unassigned_actions %}
                 <tr>
+                    <td><a href=/view_action/{{action[0]}}>View</a></td>
                     <td>{{ action[1] }} </td>
                     <td>{{ action[2] }} </td>
                     <td>{{ action[3] }} </td>
                     <td>{{ action[4] }} </td>
                     <td>{{ action[5] }} </td>
                     <td>{{ action[6] }} </td>
-                    <td>
-                        <form action="/assign_action/{{ tech_id  }}/{{ action[0] }}" method="post">
-                        <button name="assign" value="assign">Assign</button>
-                        </form> 
-                    </td>
+                    <td><a href=/edit_action/{{action[0]}}>Edit</a></td>
                 </tr>
                 {% endfor %}
             </table>
-    <a href="/logout">Logout</a>        
+    <a href="/logout">Logout</a>  
 
 </body>
 </html>
