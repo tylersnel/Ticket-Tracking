@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
 </head>
 <body>
+    <h1 class="title">USARC 88th G1</h1>
+    <div class="login" ><h2 >Log in</h2>
     <form action="/login" method="get">
-    <label for="user_name">Username:</label>
-    <input type="text" id="user_name" name="user_name"><br><br>
-    <label for="password">Password:</label>
-    <input type="text" id="password" name="password"><br><br>
-    <input type="submit" value="Submit">
+    <label for="user_name"></label>
+    <input type="text" id="user_name" name="user_name" placeholder="Username"><br><br>
+    <label for="password"></label>
+    <input type="text" id="password" name="password"  placeholder="Password"><br><br>
+    <input type="submit" value="Log in">
     </form>
+    <h6>If you are having trouble logging in, contact support:</h6>
+    <h6>1 (366) 458 - 8452</h6>
+    <h6>https://www.eamsp.army.mil</h6>
+    </div>
     {% if login_error == true %}
+        <div class="error_message">
         <p>Incorrect username or password. Please try again<P>
+        </div>
     {% endif %}
 
 </body>

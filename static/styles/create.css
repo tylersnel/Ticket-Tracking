@@ -1,0 +1,104 @@
+body, html {
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+    background-color: #EDF4F2;
+    align-items: center;
+}
+
+.title{
+    background-color: #31473A;
+    color: #EDF4F2;
+    text-align: center;
+}
+
+.form_title{
+    color: #31473A;
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+}
+
+
+.create_form{
+
+    border: 1px solid #ddd;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: #31473A;
+    border-radius: 20px 20px 20px 20px;
+    width: 900px;
+    height: 500px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin: auto;
+}
+
+.create_form select{
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #31473A;
+    
+}
+
+input[type="file"]{
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #31473A;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button,
+.styled_buttons input,
+.styled_buttons button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #31473A;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; 
+}
+
+input[type="file"]::file-selector-button:hover,
+.styled_buttons input:hover,
+.styled_buttons button:hover {
+    background-color: #6c9b80;
+}
+
+input[type="file"]::file-selector-button:active,
+.styled_buttons input:active,
+.styled_buttons button:active {
+    background-color: #EDF4F2;
+}
+
+input[type="file"]::file-selector-button:focus,
+.styled_buttons input:focus,
+.styled_buttons button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+textarea{
+    width: 600px;
+    height: 150px;
+    border-radius: 5px;  
+    font-size: 16px;
+    font-weight: bold;
+}
