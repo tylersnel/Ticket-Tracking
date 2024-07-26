@@ -1,0 +1,87 @@
+body, html {
+    display: run-in;
+    align-items: center;
+    justify-content: center;
+    background-color: #EDF4F2;
+}
+
+.title{
+    background-color: #31473A;
+    color: #EDF4F2;
+    text-align: center;
+}
+
+
+table {
+    width: 75%;
+    border-collapse: collapse;
+    margin: 35px 0;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin: auto;
+}
+
+table caption{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    color: #31473A;;
+    
+
+}
+table thead tr {
+    background-color: #31473A;
+    color: #EDF4F2;
+    border-radius: 20px 20px 0 0;
+    
+}
+
+table th {
+    padding: 12px;
+}
+
+table td {
+    padding: 5px;
+
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #c9c6c660;
+    
+}
+
+.back_button {
+    display: block;
+    margin: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #31473A;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+.back_button :hover {
+    background-color: #6c9b80;
+}
+
+.back_button :active {
+    background-color: #EDF4F2;
+}
+
+.back_button :focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}

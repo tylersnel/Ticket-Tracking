@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>View Action</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/employee_home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/view.css') }}">
 </head>
 <body>
-    <h1>View</h1>
+    <h1 class="title">Action View</h1>
         <table class="action" id="action" cellspacing="1" border="1">
             <caption>Action</caption>
-            <thread>
+            <thead>
             <tr>
                 <th>Unit</th>
                 <th>Action Type</th>
@@ -35,7 +35,7 @@
         <br></br>
         <table class="files" id="files" cellspacing="1" border="1">
             <caption>Action Files</caption>
-            <thread>
+            <thead>
             <tr>
                 <th>File</th>
                 <th>Action ID</th>
@@ -55,7 +55,7 @@
         <br></br>
         <table class="comments" id="comments" cellspacing="1" border="1">
             <caption>Action Comments</caption>
-            <thread>
+            <thead>
             <tr>
                 <th>Comment</th>
                 <th>Time</th>
@@ -72,7 +72,8 @@
             </tr>
             {% endfor %}
         </table>
-    <button onclick="goBack()">Go Back</button>
+    <br></br>
+    <button class="back_button" onclick="goBack()">Go Back</button>
     <br></br>
     <script>
         function goBack() {

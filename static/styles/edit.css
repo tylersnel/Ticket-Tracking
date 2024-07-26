@@ -1,0 +1,141 @@
+body, html {
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+    background-color: #EDF4F2;
+    align-items: center;
+}
+
+.title{
+    background-color: #31473A;
+    color: #EDF4F2;
+    text-align: center;
+}
+
+
+table {
+    width: 75%;
+    border-collapse: collapse;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin: auto;
+}
+
+table caption{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    color: #31473A;;
+    
+
+}
+table thead tr {
+    background-color: #31473A;
+    color: #EDF4F2;
+
+    
+}
+
+table th {
+    padding: 12px;
+}
+
+table td {
+    padding: 5px;
+
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #c9c6c660;
+}
+form > :not(table){
+
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    width: 50%;
+    margin-left : 25%
+}
+input,select {
+        width: auto;
+        padding: 12px 20px;
+        display: inline;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        align-self: center;
+        font-size: 18px;
+        font-family: Arial, sans-serif;
+}
+
+.edit_button {
+    display: block;
+    margin: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #31473A;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 10%;
+
+}
+
+.edit_button :hover {
+    background-color: #6c9b80;
+}
+
+.edit_button :active {
+    background-color: #EDF4F2;
+}
+
+.edit_button :focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+.button_container {
+    text-align: center; 
+}
+
+.button_container button {
+    display: inline-block;
+    margin: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #31473A;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 20%;
+
+}
+
+.button_container button :hover {
+    background-color: #6c9b80;
+}
+
+.button_container button :active {
+    background-color: #EDF4F2;
+}
+
+.button_container button :focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}

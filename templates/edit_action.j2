@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Action</title>
-     <link rel="stylesheet" href="{{ url_for('static', filename='styles/employee_home.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/edit.css') }}">
 </head>
 <body>
-    <h1>Edit</h1>
+    <h1 class="title">Edit</h1>
         <table class="action" id="action" cellspacing="1" border="1">
             <caption>Action Being Edited</caption>
-            <thread>
+            <thead>
             <tr>
                 <th>Unit</th>
                 <th>Action Type</th>
@@ -40,11 +40,12 @@
             document.getElementById('action_status').selectedIndex = 0;
         }
     </script>
+    <br></br>
     <form action="/edit_action/{{ action[0][0] }}" method="post" name="Edit_Action" id="Edit_Action" enctype="multipart/form-data">
-       <input type="hidden" id="action_id" name="action_id" value={{ action[0][0] }} 
+        <input type="hidden" id="action_id" name="action_id" value="{{ action[0][0] }}">
         <label for="unit">Unit:</label>
         <select name="unit" id="unit">
-            <option value="{{ action[0][1] }}">-Choose a unit-<option> <!-- if they don't make any changes, value stays the same -->
+            <option value="{{ action[0][1] }}">-Choose a unit-</option> <!-- if they don't make any changes, value stays the same -->
             <option value="395">395</option>
             <option value="420">420</option>
             <option value="889">889</option>
@@ -52,7 +53,7 @@
         </select>
         <label for="action_type">Action Type:</label>
         <select name="action_type" id="action_type">
-            <option value="{{ action[0][2] }}">-Choose an action type-<option> <!-- if they don't make any changes, value stays the same -->
+            <option value="{{ action[0][2] }}">-Choose an action type-</option> <!-- if they don't make any changes, value stays the same -->
             <option value="admin">Admin</option>
             <option value="finance">Finance</option>
             <option value="iPERMS">iPERMS</option>
@@ -64,65 +65,74 @@
         <input type="number" id="assigned_tech_id" name="assigned_tech_id" value="{{ action[0][4] }}"> <!-- if they don't make any changes, value stays the same -->
         <label for="action_type">Action Status:</label>
         <select name="action_status" id="action_status">
-            <option value="{{ action[0][5] }}">-Choose an action status-<option> <!-- if they don't make any changes, value stays the same -->
+            <option value="{{ action[0][5] }}">-Choose an action status-</option> <!-- if they don't make any changes, value stays the same -->
             <option value="complete">Complete</option>
             <option value="RWO">Return without action</option>
             <option value="Unassigned">Unassign</option>
             <option value="Cancelled">Cancel Action</option>
         </select><br><br>
-         <br></br>
         <table class="files" id="files" cellspacing="1" border="1">
             <caption>Action Files</caption>
-            <thread>
+            <thead>
             <tr>
                 <th>File</th>
                 <th>Action ID</th>
                 <th>User ID</th>
-                <th>Download File</th>                
+                <th>Download File</th>
             </tr>
+            </thead>
             <tbody>
             {% for files in files %}
             <tr>
-                <td>{{ files[2] }} </td>
-                <td>{{ files[1]  }} </td>
-                <td>{{ files[5]  }} </td>
-                <td><a href=/download/{{files[0]}}/{{files[2]}}>Download</a></td>
+                <td>{{ files[2] }}</td>
+                <td>{{ files[1] }}</td>
+                <td>{{ files[5] }}</td>
+                <td><a href="/download/{{files[0]}}/{{files[2]}}">Download</a></td>
             </tr>
             {% endfor %}
+            </tbody>
         </table>
+        <br></br>
         <label for="files">Upload Files:</label>
         <input type="file" id="files" name="files" multiple>
-        <br></br>
+        <br><br>
         <table class="comments" id="comments" cellspacing="1" border="1">
             <caption>Action Comments</caption>
-            <thread>
+            <thead>
             <tr>
                 <th>Comment</th>
                 <th>Time</th>
                 <th>Action ID</th>
                 <th>User ID</th>
             </tr>
+            </thead>
             <tbody>
             {% for comments in comments %}
             <tr>
-                <td>{{ comments[1] }} </td>
-                <td>{{ comments[2] }} </td>
-                <td>{{ comments[3] }} </td>
-                <td>{{ comments[4] }} </td>
+                <td>{{ comments[1] }}</td>
+                <td>{{ comments[2] }}</td>
+                <td>{{ comments[3] }}</td>
+                <td>{{ comments[4] }}</td>
             </tr>
             {% endfor %}
+            </tbody>
         </table>
+        <br></br>
         <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Enter New Comment..." required></textarea>
         <br></br>
-        <input type="submit" value="Edit" name="Edit_Action">
-        <button type="button" onclick="clearForm()">Cancel</button>
+        <input class="edit_button" type="submit" value="Edit" name="Edit_Action">
+        <br></br>
+        <div class="button_container">
+            <button type="button" onclick="clearForm()">Cancel</button>    
+            <button onclick="goBack()">Go Back</button>
+            <script>
+            function goBack() {
+                window.history.back();
+            }
+            </script>
+        </div>
     </form>
-        <button onclick="goBack()">Go Back</button>
-        <script>
-        function goBack() {
-            window.history.back();
-        }
-        </script>
+
 
 </body>
 </html>

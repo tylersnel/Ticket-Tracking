@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Action</title>
-     <link rel="stylesheet" href="{{ url_for('static', filename='styles/employee_home.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/create.css') }}">
 </head>
     <script>
         function clearForm() {
@@ -17,8 +17,9 @@
         }
     </script>
 <body>
-    <h1>Create</h1>
-     <form action="/create_action" method="post" name="Create_Action" id="Create_Action" enctype="multipart/form-data">
+    <h1 class="title">Create</h1>
+     <form class="create_form" action="/create_action" method="post" name="Create_Action" id="Create_Action" enctype="multipart/form-data">
+        <h2 class="form_title">Create Action</h2>
         <label for="unit">Unit:</label>
         <select name="unit" id="unit" required>
             <option value="">-Choose a unit-</option>
@@ -38,14 +39,18 @@
         <label for="sm_last_name">SM Last Name:</label>
         <input type="text" id="sm_last_name" name="sm_last_name" required>
         <br></br>
-        <label for="files">Upload Files:</label>
+        <br></br>
+        <label for="files" class="file_input"></label>
         <input type="file" id="files" name="files" multiple>
+        <br></br>
         <br></br>
         <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Enter Comments..." required></textarea>
         <br></br>
-        <input type="submit" value="Create" name="Create_Action">
-        <button type="button" onclick="clearForm()">Cancel</button>
-        <button onclick="goBack()">Go Back</button>
+        <div class="styled_buttons">
+            <input type="submit" value="Create" name="Create_Action">
+            <button type="button" onclick="clearForm()">Cancel</button>
+            <button onclick="goBack()">Go Back</button>
+        </div>
         <script>
         function goBack() {
             window.history.back();
