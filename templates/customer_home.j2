@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Print List in Jinja</title>
+    <title>Customer Home</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/customer_home.css') }}">
 </head>
 <body>
-    <h1>Home</h1>
-        <h2>WELCOME </h2>
-        <a href="/create_action">Create Action</a>
+    <h1 class="title">RPAC Customer Home Page</h1>
+        <h2>WELCOME</h2>
+        <a class="create_link" href="/create_action">Create Action</a> <a class="logout_link" href="/logout">Logout</a>    
         <table class="assigned_actions_table" id="assigned_actions_table" cellspacing="1" border="1">
                 <caption>Your Assigned Actions</caption>
-                <thread>
+                <thead>
                 <tr>
                     <th>View</th>
                     <th>Unit</th>
@@ -36,7 +37,7 @@
         <br></br>
         <table class="RWO_actions_table" id="RWO_actions_table" cellspacing="1" border="1">
                 <caption>RWO Actions</caption>
-                <thread>
+                <thead>
                 <tr>
                     <th>View</th>
                     <th>Unit</th>
@@ -64,7 +65,7 @@
         <br></br>
         <table class="unassigned_actions_table" id="unassigned_actions_table" cellspacing="1" border="1">
                 <caption>Your Unassigned Actions</caption>
-                <thread>
+                <thead>
                 <tr>
                     <th>View</th>
                     <th>Unit</th>
@@ -89,7 +90,6 @@
                 </tr>
                 {% endfor %}
             </table>
-    <a href="/logout">Logout</a>  
-
+    <br></br>
 </body>
 </html>
