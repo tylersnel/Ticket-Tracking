@@ -1,0 +1,128 @@
+body, html {
+    display: run-in;
+    align-items: center;
+    justify-content: center;
+    background-color: #EDF4F2;
+}
+
+.title{
+    background-color: #31473A;
+    color: #EDF4F2;
+    text-align: center;
+}
+
+.unassigned_actions_table,
+.RWO_actions_table,
+.assigned_actions_table {
+    width: 75%;
+    border-collapse: collapse;
+    margin: 35px 0;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    
+}
+
+.unassigned_actions_table caption,
+.RWO_actions_table caption,
+.assigned_actions_table  caption{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    color: #31473A;;
+    
+
+}
+
+.unassigned_actions_table thead tr,
+.RWO_actions_table thead tr,
+.assigned_actions_table  thead tr {
+    background-color: #31473A;
+    color: #EDF4F2;
+    
+    
+}
+
+.unassigned_actions_table th,
+.RWO_actions_table th,
+.assigned_actions_table  th {
+    padding: 12px;
+}
+
+.unassigned_actions_table td,
+.RWO_actions_table td,
+.assigned_actions_table  td {
+    padding: 5px;
+
+}
+
+.unassigned_actions_table tbody tr:nth-last-of-type(even),
+.RWO_actions_table tbody tr:nth-of-type(even),
+.assigned_actions_table  tbody tr:nth-of-type(even) {
+    background-color: #c9c6c660;
+    
+}
+
+.create_link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #31473A;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create_link:hover {
+    background-color: #6c9b80;
+}
+
+.create_link:active {
+    background-color: #EDF4F2;
+}
+
+.create_link:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+
+.logout_link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #31473A;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout_link:hover {
+    background-color: #6c9b80;
+}
+
+.logout_link:active {
+    background-color: #EDF4F2;
+}
+
+.logout_link:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+

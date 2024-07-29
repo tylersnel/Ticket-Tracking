@@ -92,6 +92,7 @@ class DB:
         return result
     #Function used for assigning an action
     def db_assign_action(self, query1, query2, query3, query4):
+        self.mydb.autocommit = True
         cursor=self.mydb.cursor()
         cursor.execute(query1, (query2, query3, query4))
         result = cursor.rowcount

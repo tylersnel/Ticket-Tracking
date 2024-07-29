@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1 class="title">RPAC Employee Home Page</h1>
-        <h2>WELCOME {{ user_name }}</h2>
+        <h2>WELCOME</h2>
         <a class="create_link" href="/create_action">Create Action</a> <a class="logout_link" href="/logout">Logout</a>       
             <table class="assigned_actions_table" id="assigned_actions_table" cellspacing="1" border="1">
                 <caption>Your Assigned Actions</caption>
@@ -62,13 +62,20 @@
                     <td>{{ action[6] }} </td>
                     <td>
                         <form action="/assign_action/{{ tech_id  }}/{{ action[0] }}" method="post">
-                        <button name="assign" value="assign">Assign</button>
+                            <button name="assign" value="assign" class="assignButton">Assign</button>
                         </form> 
                     </td>
                 </tr>
                 {% endfor %}
             </table>
     
+       <script>
+        document.querySelectorAll('.assignButton').forEach(function(button) {
+            button.addEventListener('click', function() {
+                alert('Action has been assigned');
+            });
+        });
+    </script>
 
 </body>
 </html>
