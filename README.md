@@ -16,9 +16,9 @@ Work Action Tracker is a web application designed to streamline and manage work 
 
 ## Usage
 ### Customer Interface:
-- Go to the homepage to submit a new work request.
+- Log in to profile submit a new work request.
 - Upload necessary files and monitor the status of your request from the dashboard.
 
 ### Employee Interface:
-- Log in to view assigned tickets.
+- Log in to create, edit or view assigned tickets.
 - Review ticket details and either request more information or change ticket status.
