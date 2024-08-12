@@ -1,6 +1,6 @@
 # Work Ticket Tracker
 ## Overview
-Work Action Tracker is a web application designed to streamline and manage work requests submitted by customers. The app allows customers to upload files and track the status of their work requests. Employees can use the app to monitor and manage their assigned tasks, send tickets back for additional updates, or mark them as completed.
+This app was created after I noticed a business need for my current employer. We were managing customer action requests from a group email inbox which was difficult to manage. It lead to work dupliation, requests becoming lost or going unnoticed, and inconsistent responses to customers. This Work Action Tracker web application is designed to streamline and manage work requests submitted by customers. The app allows customers to upload files and track the status of their work requests. Employees can use the app to monitor and manage their assigned tasks, send tickets back for additional updates, or mark them as completed.
 
 ## Features
 ### Customer Portal:
