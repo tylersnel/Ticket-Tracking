@@ -1,2 +1,0 @@
-
-        MainWindow.setCentralWidget(self.centralwidget)

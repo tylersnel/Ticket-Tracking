@@ -1,6 +1,7 @@
 """File that is used to SQL queires so that user inputs are separated from DB queries
 to help prevent injection attacks"""
 import mysql.connector
+
 class DB:
     def __del__(self):
         self.mydb.close()
