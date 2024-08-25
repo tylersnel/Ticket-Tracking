@@ -40,7 +40,7 @@ def render_customer_home(customer_id):
 #helper function to send variables to render home pages. Also helps with redirection back to home page when coming from other pages
 @app.route('/', methods=["GET"])
 def main():
-    if 'username' in session:
+    if session['username']:
         permissions = session['permissions']
         if permissions==2: #if employee
             user_name=session['username']
