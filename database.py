@@ -9,7 +9,7 @@ class DB:
     def __init__(self):
         self.mydb=mysql.connector.connect(
             host="localhost",
-            user="root",
+            user="ticket",
             passwd="",
             database="users"
         )
