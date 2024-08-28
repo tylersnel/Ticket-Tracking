@@ -205,5 +205,5 @@ def logout():
     return render_template("login.j2")
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 80))
     app.run(port=port) 
