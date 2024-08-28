@@ -1,8 +1,8 @@
 import flask
 from flask import render_template, request, redirect, url_for, session, flash, send_file
 import os
+import sys
 import database
-import daemon 
 from key import key
 import io
 
@@ -207,5 +207,12 @@ def logout():
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    with daemon.DaemonContext: 
-        app.run(host="0.0.0.0",port=port) 
+    if(False): 
+        if os.fork() > 0:
+            sys.exit()  # Exit the parent process
+        os.setsid()  # Detach from terminal
+        if os.fork() > 0:
+            sys.exit()  # Exit the second parent process
+        sys.stdout.flush()
+        sys.stderr.flush()
+    app.run(host="0.0.0.0",port=port) 
