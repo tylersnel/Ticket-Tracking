@@ -2,6 +2,7 @@ import flask
 from flask import render_template, request, redirect, url_for, session, flash, send_file
 import os
 import database
+import daemon 
 from key import key
 import io
 
@@ -206,4 +207,5 @@ def logout():
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    app.run(host="0.0.0.0",port=port) 
+    with daemon.DaemonContext: 
+        app.run(host="0.0.0.0",port=port) 
